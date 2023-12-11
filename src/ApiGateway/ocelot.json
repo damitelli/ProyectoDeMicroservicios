@@ -1,0 +1,113 @@
+{
+    "Routes": [
+        {
+            "UpstreamPathTemplate": "/v1/authgateway/{any}",
+            "UpstreamHttpMethod": [
+                "Post"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/v1/userauthentication/{any}",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identity-api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/v1/usergateway",
+            "UpstreamHttpMethod": [
+                "Get"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/v1/users",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identity-api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/v1/usergateway/{any}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Put"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/v1/users/{any}",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identity-api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/v1/catalog-gateway/{any}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/v1/items/{any}",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "catalog-api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/v1/favorite-item-gateway/{any}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/v1/favorite-items/{any}",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "favorite-list-api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/v1/user-favorite-list-gateway/{any}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/v1/user-favorite-list/{any}",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "favorite-list-api",
+                    "Port": 80
+                }
+            ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:5201"
+    },
+    "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 3
+    },
+    "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+    },
+    "RouteClaimsRequirement": {
+        "role": "SuperAdmin"
+    }
+}

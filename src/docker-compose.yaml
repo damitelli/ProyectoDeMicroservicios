@@ -1,0 +1,48 @@
+services:
+  stackupPostgres:
+    image: postgres
+    container_name: stackupPostgres
+
+  mongo:
+    image: mongo
+    container_name: mongoDB
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+
+  api-gateway:
+    image: api-gateway:latest
+    container_name: api-gateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+
+  catalog-api:
+    image: catalog-api:latest
+    container_name: catalog-api
+    build:
+      context: .
+      dockerfile: Servicios/Catalog/CatalogAPI/PublicAPI/Dockerfile
+    depends_on:
+      - mongo
+      - rabbitmq
+
+  favorite-list-api:
+    image: favorite-list-api:latest
+    container_name: favorite-list-api
+    build:
+      context: .
+      dockerfile: Servicios/FavoriteList/FavoriteListAPI/PublicAPI/Dockerfile
+    depends_on:
+      - mongo
+      - rabbitmq
+
+  identity-api:
+    image: identity-api:latest
+    container_name: identity-api
+    build:
+      context: .
+      dockerfile: Servicios/Identity/IdentityAPI/PublicAPI/Dockerfile
+    depends_on:
+      - stackupPostgres
