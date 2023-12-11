@@ -60,6 +60,7 @@ Primero debemos situarnos en la carpeta de Infrastructure de Identity y luego ej
 Los datos del super admin son los siguientes:
 
 Usuario: superadmin
+<br>
 Contraseña: SA!123456
 
 
