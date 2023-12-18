@@ -1,5 +1,5 @@
 # Proyecto De Microservicios
-Backend de 3 microservicios desarrollados en .Net (Catalog, Favorite List e Identity) corriendo por detrás de una API Gateway construida con Ocelot, RabbitMQ como message broker y Mass Transit como distributed application framework.
+Backend de una lista de favoritos. Similar a una WishList. Consta de 3 microservicios desarrollados en .Net (Catalog, Favorite List e Identity) corriendo por detrás de una API Gateway construida con Ocelot, RabbitMQ como message broker y Mass Transit como distributed application framework.
 
 
 # Descripción General
@@ -8,10 +8,10 @@ Backend de 3 microservicios desarrollados en .Net (Catalog, Favorite List e Iden
   
 - Microservicios
   - Catalog
-    Contiene el catalogo de items. Permite hacer un CRUD de los mismos. Desde aquí se puede seleccionar un item como favorito. Esta           acción envía un mensaje con los datos de usuario y de la selección, que por medio de Mass Transit y RabbitMq, es recibido por el          microservicio de Favorite List. 
+    Contiene el catalogo de items. Permite hacer un CRUD de los mismos. Desde aquí se puede seleccionar un item como favorito. Esta acción envía un mensaje con los datos de usuario y de la selección, que por medio de Mass Transit y RabbitMq, es recibido por el microservicio de Favorite List. 
 
   - Favorite List
-    Contiene los items seleccionados por los usuarios y las listas de favoritos pertenecientes a cada uno. La informarción no solo            proviene de los mensajes sino que también es posible hacer un CRUD tanto de los items como de las listas, siempre y cuando se tengan      los permisos correspondientes.
+    Contiene los items seleccionados por los usuarios y las listas de favoritos pertenecientes a cada uno. La informarción no solo proviene de los mensajes sino que también es posible hacer un CRUD tanto de los items como de las listas, siempre y cuando se tengan los permisos correspondientes.
 
   - Identity
     Encargado de la autenticación, autorización, acceso y modificación de los datos de usuario.
